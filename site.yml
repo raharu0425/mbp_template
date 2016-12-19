@@ -1,0 +1,10 @@
+---
+# 環境構築
+# あらかじめやらないといけないことがあるからREADMEよめ
+- hosts: default
+  connection: local
+  become: false
+  roles:
+    - brew
+    - common
+    - vagrant

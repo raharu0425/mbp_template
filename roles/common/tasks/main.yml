@@ -1,0 +1,37 @@
+---
+- name: インストール
+  homebrew: name={{item}} state=present
+  with_items:
+    - git
+    - vim
+
+- name: vimrcの設定ファイルを落としてくる
+  git:
+    repo: git@github.com:raharu0425/vimrc.git
+    dest: ~/vimrc
+    version: master
+    accept_hostkey: yes
+
+- name: neobundle.vim入れる
+  git:
+    repo: git://github.com/Shougo/neobundle.vim.git
+    dest: ~/.vim/bundle/neobundle.vim
+    version: master
+
+- name: .gitconfigの設定ファイルを変更
+  template: src=.gitconfig.j2 dest=~/.gitconfig
+
+- name: フォルダ作成
+  file: path=~/.vim/dictionary state=directory
+
+- name: php辞書ファイルの作成
+  shell: php -r '$f=get_defined_functions();echo join("\n",$f["internal"]);'|sort > ~/.vim/dictionary/php.dict
+
+- name: bashrcのファイル変更する
+  template: src=.bashrc.j2 dest=~/.bashrc
+
+- name: bashprofileのファイル変更する
+  template: src=.bash_profile.j2 dest=~/.bash_profile
+
+- name: bashprofileを反映
+  shell: source ~/.bash_profile

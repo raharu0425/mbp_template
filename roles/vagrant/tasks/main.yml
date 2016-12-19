@@ -1,0 +1,8 @@
+---
+# Vagrantの導入入れるのはBrewCaskから入れる
+- name: Vagrantインストール
+  homebrew_cask: name={{ item }}
+  with_items:
+    - virtualbox
+    - vagrant
+    - vagrant-manager

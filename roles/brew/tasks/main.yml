@@ -1,0 +1,8 @@
+---
+# Brew本体のupdateをおこないます
+# ついでにCaskもいれておきます
+- name: Brew アップデート
+  homebrew: update_homebrew=yes state=latest
+
+- name: homebrew caskも入れておく
+  homebrew_tap: tap=caskroom/cask state=present
