@@ -8,3 +8,5 @@
     - brew
     - common
     - vagrant
+    - composer
+    - phalcon3

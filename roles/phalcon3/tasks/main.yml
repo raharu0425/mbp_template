@@ -1,0 +1,20 @@
+---
+- name: インストール
+  homebrew: name={{item}} state=present
+  with_items:
+    - php70-phalcon
+
+- name: phalcon_devtoolを入れる
+  git:
+    repo: git://github.com/phalcon/phalcon-devtools.git
+    dest: ~/tmp/phalcon3_dev_tool/
+    version: 3.0.x
+
+- name: phalcon_devtoolインストール
+  shell: ~/tmp/phalcon3_dev_tool/phalcon.sh
+
+- name: インストール先にシンボリックリンクを張り替える
+  file:
+    src: ~/tmp/phalcon3_dev_tool/phalcon.php
+    dest: /usr/local/bin/phalcon
+    state: link
