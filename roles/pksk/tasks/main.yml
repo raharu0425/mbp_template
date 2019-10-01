@@ -1,0 +1,24 @@
+---
+- name: プロジェクトフォルダ作成
+  file: path=~/work/pksc state=directory
+
+- name: プロジェクトを入れていく
+  git:
+    repo: newstech@newstech.git.backlog.jp:/PKSC/{{item}}.git
+    dest: ~/work/pksc/{{item}}
+    version: master
+    accept_hostkey: yes
+  with_items:
+    - pokesaka_iphone
+    - pokesaka_android
+    - pokesaka_kindle
+    - pokesaka_TWHK
+    - cron_batch01
+    - cron_batch02
+    - cron_batch04
+    - cron_batch01android
+    - cron_batch02android
+    - cron_batch03android
+    - cron_batch01kindle
+    - cron_poke_league
+    - pokesaka_web
