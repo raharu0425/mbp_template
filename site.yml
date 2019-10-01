@@ -6,8 +6,8 @@
   become: false
   roles:
     - brew
-    - common
+      #- common
     - vagrant
-    - composer
-    - phalcon3
-    - rdm
+      #- composer
+      #- phalcon3
+      #    - rdm
